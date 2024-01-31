@@ -7,6 +7,7 @@ const port = 9000
 
 app.use('/', createProxyMiddleware({
   target: 'https://api.openai.com',
+  timeout: 120000,
   changeOrigin: true,
   onProxyReq: (proxyReq, req, res) => {
     // 移除 'x-forwarded-for' 和 'x-real-ip' 头，以确保不传递原始客户端 IP 地址等信息
